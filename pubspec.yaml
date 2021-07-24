@@ -55,7 +55,6 @@ flutter:
     - images/tabbar_mine.png
     - images/tabbar_mine_hl.png
     - images/朋友圈.png
-    - images/标签.png
     - images/icon_right.png
     - images/扫一扫2.png
     - images/摇一摇.png
@@ -66,6 +65,19 @@ flutter:
     - images/游戏.png
     - images/小程序.png
     - images/badge.png
+    - images/相机.png
+    - images/微信 支付.png
+    - images/微信收藏.png
+    - images/微信相册.png
+    - images/微信卡包.png
+    - images/微信表情.png
+    - images/微信设置.png
+    - images/franky.jpg
+    - images/icon_friends_add.png
+    - images/新的朋友.png
+    - images/群聊.png
+    - images/标签.png
+    - images/公众号.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
