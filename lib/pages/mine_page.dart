@@ -138,7 +138,8 @@ class _MinePageState extends State<MinePage> {
                     )
                   ],
                 ),
-              )),
+              )
+          ),
         ],
       ),
     ));

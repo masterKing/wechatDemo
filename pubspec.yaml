@@ -78,6 +78,7 @@ flutter:
     - images/群聊.png
     - images/标签.png
     - images/公众号.png
+    - images/气泡.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
