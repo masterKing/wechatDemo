@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wechat_demo/pages/chat_page.dart';
+import 'package:wechat_demo/pages/chat/chat_page.dart';
 import 'package:wechat_demo/pages/discover/discover_page.dart';
 import 'package:wechat_demo/pages/friends/friends_page.dart';
 import 'package:wechat_demo/pages/mine_page.dart';
@@ -12,13 +12,15 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  int _currentIndex = 1;
+  final _pageController = PageController(initialPage: 0);
+
+  int _currentIndex = 0;
 
   void _onTap(int index){
     _currentIndex = index;
     setState(() {
-
     });
+    _pageController.jumpToPage(index);
   }
 
   @override
@@ -62,7 +64,11 @@ class _RootPageState extends State<RootPage> {
           ),
         ],
       ),
-      body: pages[_currentIndex],
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        children: pages,
+      ),
     );
   }
 }

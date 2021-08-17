@@ -8,7 +8,7 @@ class MinePage extends StatefulWidget {
   _MinePageState createState() => _MinePageState();
 }
 
-class _MinePageState extends State<MinePage> {
+class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin<MinePage> {
   Widget _headerCell() {
     return Container(
       height: 200,
@@ -62,7 +62,11 @@ class _MinePageState extends State<MinePage> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
         body: Container(
       child: Stack(

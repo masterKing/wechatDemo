@@ -29,6 +29,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  http: ^0.13.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -79,6 +81,11 @@ flutter:
     - images/标签.png
     - images/公众号.png
     - images/气泡.png
+    - images/圆加.png
+    - images/发起群聊.png
+    - images/添加朋友.png
+    - images/扫一扫1.png
+    - images/收付款.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

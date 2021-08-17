@@ -13,13 +13,16 @@ class FriendsPage extends StatefulWidget {
   _FriendsPageState createState() => _FriendsPageState();
 }
 
-class _FriendsPageState extends State<FriendsPage> {
+class _FriendsPageState extends State<FriendsPage> with AutomaticKeepAliveClientMixin<FriendsPage>{
 
   final ScrollController _scrollController = ScrollController();
   final Map _groupOffsetMap = {
     '🔍' : 0.0,
   };
   double _maxScrollExtent = double.maxFinite;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   // 一般是初始化数据
@@ -78,6 +81,7 @@ class _FriendsPageState extends State<FriendsPage> {
   @override
   // 一般用来初始化视图
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: themeColor,
