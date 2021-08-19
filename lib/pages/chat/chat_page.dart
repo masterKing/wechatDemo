@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wechat_demo/pages/chat/chat.dart';
+import 'package:wechat_demo/pages/chat/search_cell.dart';
 import 'package:wechat_demo/pages/const.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -13,6 +14,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage>
 with AutomaticKeepAliveClientMixin<ChatPage>{
+
   PopupMenuItem _buildMenuItem(String imageName, String title) {
     return PopupMenuItem(
       value: {
@@ -48,6 +50,7 @@ with AutomaticKeepAliveClientMixin<ChatPage>{
     super.build(context);
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         backgroundColor: themeColor,
         title: Text(
           "微信",
@@ -89,26 +92,31 @@ with AutomaticKeepAliveClientMixin<ChatPage>{
           child: CircularProgressIndicator(),
         )
             : ListView.builder(
-          itemCount: _chatList.length,
-          itemBuilder: (BuildContext context, int index){
-            return ListTile(
-              title: Text(_chatList[index].name),
-              subtitle: Container(
-                height: 20,
-                width: 20,
-                child: Text(
-                  _chatList[index].message,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(_chatList[index].imageUrl),
-              ),
-            );
-          },
+          itemCount: _chatList.length + 1,
+          itemBuilder: _listViewItemBuilder,
         ),
       ),
     );
+  }
+
+  Widget _listViewItemBuilder(BuildContext context, int index){
+    if (index == 0){
+      // return SearchCell();
+      return SearchCell(datas: _chatList);
+    }else{
+      return ListTile(
+        title: Text(_chatList[index-1].name),
+        subtitle: Container(
+          child: Text(
+            _chatList[index-1].message,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        leading: CircleAvatar(
+          backgroundImage: NetworkImage(_chatList[index-1].imageUrl),
+        ),
+      );
+    }
   }
 
   @override
@@ -152,8 +160,7 @@ with AutomaticKeepAliveClientMixin<ChatPage>{
 
   Future<List<Chat>?> getData() async {
     _cancelConnect = false;
-    var response = await http
-        .get(Uri.parse('http://rap2api.taobao.org/app/mock/data/2042105'));
+    var response = await http.get(Uri.parse('http://rap2api.taobao.org/app/mock/data/2042105'));
     if (response.statusCode == 200) {
       final responseMap = json.decode(response.body);
       List<Chat> chatList = responseMap['chat_list'].map<Chat>((item) {

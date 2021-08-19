@@ -86,6 +86,8 @@ flutter:
     - images/添加朋友.png
     - images/扫一扫1.png
     - images/收付款.png
+    - images/放大镜b.png
+    - images/放大镜w.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
